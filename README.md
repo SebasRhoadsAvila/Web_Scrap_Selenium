@@ -7,7 +7,7 @@ This is a web-scraping exercise for a project that involves filling three column
 ## Repository Contents
 
 - **`WebScrapingZacatecas.ipynb`**: The main Python script that performs the web scraping.
-- **`data/`**: Directory containing the raw and processed data files.
+- **`ESTADOS.xlsx`**: The processed dataset.
 - **`README.md`**: This file, providing an overview and instructions.
 
 ## Database Structure
