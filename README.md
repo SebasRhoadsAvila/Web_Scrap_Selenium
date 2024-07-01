@@ -27,4 +27,8 @@ This is an example from the first link in the column
     
     https://upcp-compranet.hacienda.gob.mx/sitiopublico/#/sitiopublico/detalle/0f6117fcc2bd4c15b9ccf4b5c69fef30/procedimiento
 
+![Example](WebScrapping/webscrp1.png)
+
+We can find, at the bottom a 1 row table. From there, I extracted the information from columns 4, 6 and 7. This process gets repeated for each link in the `ESTADOS.xlsx` dataset. However, there is a catch, son links contain a table with up to 50 rows, that the dataset wasn't aware of their eixtence. 
+
 Happy scraping!
