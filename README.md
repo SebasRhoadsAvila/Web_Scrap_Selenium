@@ -4,7 +4,7 @@
 
 This is a web-scraping exercise for a project that involves filling three columns from various databases of many Mexican states. The exercise found in this repository focuses on the state of Zacatecas and serves as an example of automatic scraping for pages made with JavaScript.
 
-## Repository Contents
+## Repository Relevant Contents
 
 - **`WebScrapingZacatecas.ipynb`**: The main Python script that performs the web scraping.
 - **`ESTADOS.xlsx`**: The processed dataset.
@@ -23,12 +23,24 @@ The database contains many columns, from which we only cared about the last four
 
 **CompraNet**: 
 
-This is an example from the first link in the column
+This is an example from the first link in the column:
     
     https://upcp-compranet.hacienda.gob.mx/sitiopublico/#/sitiopublico/detalle/0f6117fcc2bd4c15b9ccf4b5c69fef30/procedimiento
 
 ![Example](WebScrapping/webscrp1.png)
 
-We can find, at the bottom a 1 row table. From there, I extracted the information from columns 4, 6 and 7. This process gets repeated for each link in the `ESTADOS.xlsx` dataset. However, there is a catch, son links contain a table with up to 50 rows, that the dataset wasn't aware of their eixtence. 
+At the bottom, we can find a 1-row table. From there, I extracted the information from columns 4, 6, and 7. This process is repeated for each link in the **`ESTADOS.xlsx`** dataset. However, there is a catch: some links contain a table with up to 50 rows that the dataset wasn't aware of.
+
+For example:
+    
+    https://upcp-compranet.hacienda.gob.mx/sitiopublico/#/sitiopublico/detalle/0f6117fcc2bd4c15b9ccf4b5c69fef30/procedimiento
+
+![Example](WebScrapping/webscrp2.png)
+
+For these, the algorithm iterates over every row and adds them to the final dataset. If the initial observations were 65, the final results could have a thousand or more, depending on how many rows were contained in the relevant table of each link.
+
+## Code and Output
+
+
 
 Happy scraping!
