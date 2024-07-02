@@ -4,11 +4,14 @@
 
 This is a web-scraping exercise for a project that involves filling three columns from various databases of many Mexican states. The exercise found in this repository focuses on the state of Zacatecas and serves as an example of automatic scraping for pages made with JavaScript.
 
+---
+
 ## Repository Relevant Contents
 
 - **`WebScrapingZacatecas.ipynb`**: The main Python script that performs the web scraping.
 - **`ESTADOS.xlsx`**: The processed dataset.
 - **`README.md`**: This file, providing an overview and instructions.
+---
 
 ## Database Structure
 
@@ -18,6 +21,7 @@ The database contains many columns, from which we only cared about the last four
 2. **`Descripción CUCoP+`**: Product description.
 3. **`Canidad `**: Quantity of the product bought.
 4. **`Unidad de medida`**: Unit of Measure.
+---
 
 ## Web Page
 
@@ -39,9 +43,11 @@ For example:
 
 For these, the algorithm iterates over every row and adds them to the final dataset. If the initial observations were 65, the final results could have a thousand or more, depending on how many rows were contained in the relevant table of each link.
 
+---
+
 ## Code Explanation
 
----
+
 This part of the script is responsible for setting up the necessary libraries and loading the Excel file:
 
 ```python
@@ -87,9 +93,9 @@ def setup_driver():
 
 
 
----
 
-This code is responsible for iterating through URLs, extracting data from web pages, and saving the data into an Excel file. Here's a detailed explanation:
+
+The next part of the code is responsible for iterating through URLs, extracting data from web pages, and saving the data into an Excel file. 
 
 ```python
 # 1
@@ -127,6 +133,7 @@ new_df = pd.DataFrame(data)
 new_df.to_excel('C:/Users/Acer/Desktop/PythonNotes/Python/DataSetsPython/ZACATECAS_RESULTS.xlsx', index=False)
 print("Proceso completado. El archivo Excel ha sido actualizado.")
 ```
+Here's a detailed explanation:
 
 1. **Initialize Data Storage**:
    - `data = []`: An empty list to store the extracted data.
@@ -164,8 +171,83 @@ print("Proceso completado. El archivo Excel ha sido actualizado.")
    - `print("Proceso completado. El archivo Excel ha sido actualizado.")`: Prints a message indicating that the process is complete and the Excel file has been updated.
 
 
----
+
 
 The code systematically goes through each URL, scrapes the required data from the web pages, and compiles it into a structured Excel file for further analysis.
+
+---
+
+## Output Explanation
+
+The script prints the progress and extracted data from each URL. Here's an example for the first 4:
+
+```plaintext
+Procesando URL 1 de 65: https://upcp-compranet.hacienda.gob.mx/sitiopublico/#/sitiopublico/detalle/0f6117fcc2bd4c15b9ccf4b5c69fef30/procedimiento
+Extraído: Descripción - VEHICULO MILITAR, Unidad - PIEZA, Cantidad - 4
+Procesando URL 2 de 65: https://upcp-compranet.hacienda.gob.mx/sitiopublico/#/sitiopublico/detalle/d96cf28b23064d83baec96e1fbb04908/procedimiento
+Extraído: Descripción - SERVICIOS INTEGRALES, Unidad - SERVICIO, Cantidad - 1
+Procesando URL 3 de 65: https://upcp-compranet.hacienda.gob.mx/sitiopublico/#/sitiopublico/detalle/c3fda3cbbb7842c5a03566f2d6cd1236/procedimiento
+Extraído: Descripción - TALADRO ELECTRICO (MADERA, METAL, PIEDRA Y PLASTICO), Unidad - PIEZA, Cantidad - 4
+Extraído: Descripción - TELEFONO CELULAR (EQ. DE COM., CINEMAT. O FOTOGRAF.), Unidad - PIEZA, Cantidad - 6
+Extraído: Descripción - RECEPTOR DE INFORMACION DE ALTA PRECISION GNSS Y GPS, Unidad - PIEZA, Cantidad - 10
+Extraído: Descripción - UNIDAD DISCO MAGNETICO REMOVIBLE (EQ. DE COMPUTACION), Unidad - PIEZA, Cantidad - 4
+Extraído: Descripción - LAMPARA CON LUPA, Unidad - PIEZA, Cantidad - 14
+Extraído: Descripción - CAMARA PARA VIDEOGRABADORA (EQ. DE COM., CINEMAT. O FOTOGRAF.), Unidad - PIEZA, Cantidad - 4
+Procesando URL 4 de 65: https://upcp-compranet.hacienda.gob.mx/sitiopublico/#/sitiopublico/detalle/6976298087384613a12e7b553b5b9f00/procedimiento
+Extraído: Descripción - MOCHILA PARA REPARTO DE CORRESPONDENCIA, Unidad - PIEZA, Cantidad - 2
+Extraído: Descripción - REACTIVOS ANALITICOS, Unidad - PIEZA, Cantidad - 4
+Extraído: Descripción - REACTIVOS ANALITICOS, Unidad - PIEZA, Cantidad - 5
+Extraído: Descripción - REACTIVOS ANALITICOS, Unidad - PIEZA, Cantidad - 4
+Extraído: Descripción - REACTIVOS ANALITICOS, Unidad - PIEZA, Cantidad - 3
+Extraído: Descripción - CAMISAS, Unidad - PIEZA, Cantidad - 38
+Extraído: Descripción - CAMISAS, Unidad - PIEZA, Cantidad - 48
+Extraído: Descripción - PLAYERA, Unidad - PIEZA, Cantidad - 45
+Extraído: Descripción - CHAQUETA / CHAMARRA (ATAVIÓ CIVIL MILITAR O RELIGIOSO), Unidad - PIEZA, Cantidad - 35
+```
+
+- **Processing Progress**: The script prints the current URL being processed and its index out of the total number of URLs.
+  - Example: `Procesando URL 1 de 65: ...`
+
+- **Extracted Data**: For each item found on the page, the script prints the extracted description, unit, and quantity.
+  - Example: `Extraído: Descripción - VEHICULO MILITAR, Unidad - PIEZA, Cantidad - 4`
+
+- **Handling Multiple Rows**: Some URLs may contain multiple items, and the script handles each row individually, printing the extracted details for each item.
+  - Example for multiple items:
+    ```plaintext
+    Extraído: Descripción - TALADRO ELECTRICO (MADERA, METAL, PIEDRA Y PLASTICO), Unidad - PIEZA, Cantidad - 4
+    Extraído: Descripción - TELEFONO CELULAR (EQ. DE COM., CINEMAT. O FOTOGRAF.), Unidad - PIEZA, Cantidad - 6
+    Extraído: Descripción - RECEPTOR DE INFORMACION DE ALTA PRECISION GNSS Y GPS, Unidad - PIEZA, Cantidad - 10
+    ```
+
+This output helps in tracking the progress of the script and verifying that data is being extracted correctly from each URL.
+
+
+
+---
+
+### Important Note
+
+**ChromeDriver Installation Required**
+
+To run this script, you must have ChromeDriver installed on your computer. ChromeDriver is necessary because it allows Selenium to control the Chrome browser for web scraping tasks. Here’s why it is needed:
+
+- **Browser Automation**: ChromeDriver acts as a bridge between your Selenium scripts and the Chrome browser. It enables the script to open web pages, interact with elements, and extract data.
+- **Compatibility**: The version of ChromeDriver must match the version of your Chrome browser. This compatibility is crucial for the script to function correctly.
+
+**Installation Instructions**:
+
+1. **Automatic Installation (Recommended)**:
+   - The script uses `webdriver_manager` to automatically manage ChromeDriver. This approach simplifies the setup by downloading the correct version of ChromeDriver based on your installed Chrome browser version.
+
+2. **Manual Installation**:
+   - Download ChromeDriver from the [official site](https://getwebdriver.com/).
+   - Ensure that the ChromeDriver executable is in your system's PATH.
+   - Make sure the version of ChromeDriver matches the version of your installed Chrome browser. You can check your Chrome version by going to `chrome://settings/help` in your browser.
+
+By ensuring ChromeDriver is correctly installed and its version matches your Chrome browser version, you will enable the script to run smoothly and perform the web scraping tasks as intended.
+
+---
+
+
 
 Happy scraping!
